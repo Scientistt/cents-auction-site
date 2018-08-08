@@ -1,0 +1,51 @@
+<div class="page-header text-center">
+    <h1>{{picture.titulo}}</h1>
+</div>
+
+<p class="alert alert-info" ng-show="mensagem.length">
+    {{mensagem}}
+</p>
+
+<form name="formulario" class="row" novalidate ng-submit="submitPicture()">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Title*</label>
+            <input name="titulo" ng-model="picture.titulo" class="form-control" required ng-maxlength="20">
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required">
+                Please, enter the title.
+            </span>
+            <span class="form-control alert-danger" ng-show="formulario.titulo.$error.maxlength">
+                The title should be below 20 characthers.
+            </span>
+        </div>
+        <div class="form-group">
+            <label>URL*</label>
+            <input name="url"  ng-model="picture.url" class="form-control" required>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.url.$error.required">
+                Please, enter the image url.
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="descricao"  ng-model="picture.descricao" class="form-control">
+ </textarea>
+        </div>
+        <div class="form-group">
+            <label>Group*</label>
+            <select name="group" class="form-control" ng-controller="groupsController" ng-model="picture.group" ng-options="group._id as group.nome for group in groups" required>
+                <option value="">Select the group...</option>
+            </select>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.group.$error.required">
+                Please, select the group.
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a href="/" class="btn btn-primary">Voltar</a>
+        <hr>
+    </div>
+    <div class="col-md-6">
+        <minha-foto url="{{picture.url}}" titulo="{{picture.titulo}}"></minha-foto>
+    </div>
+</form>

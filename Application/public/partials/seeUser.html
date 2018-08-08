@@ -1,0 +1,66 @@
+
+<br/>
+<div class="row">
+    <h1 class="col-lg-6 col-sm-12">Welcome, <a href="/edituser/{{user.nome}}">{{user.nome}}</a> :)</h1>
+    <div style="alignment: right"><h3 class=" btn-lg btn-info" align="right">You've got <b>{{user.bids}}</b> bids</h3></div>
+</div>
+<br/>
+<div class="row" ng-controller="AuctionsController">
+    <div class="col-lg-4 col-md-12">
+        <div>
+            <label><b>Logging data: </b></label>
+            <label>{{user.email}} - {{user.nome}} <i style="color: {{((user.status=='Admin') ? '#007BFF' : ((user.status=='Blocked') ? '#ca294f' : '#000000'))}}">({{user.status}})</i></label>
+        </div>
+        <div>
+            <label><b>nome: </b></label>
+            <label>{{user.fullname}}</label>
+        </div>
+        <div>
+            <div>
+                <label><b>CPF: </b></label>
+                <label>{{user.cpf}}</label>
+            </div>
+            <div>
+                <label><b>RG: </b></label>
+                <label>{{user.rg}}</label>
+            </div>
+            <div>
+                <label><b>Birthday: </b></label>
+                <label>{{user.birthday}}</label>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label><b>Phone: </b></label>
+                <label>{{user.phone1}}</label>
+            </div>
+            <div>
+                <label><b>Alt Phone: </b></label>
+                <label>{{user.phone2}}</label>
+            </div>
+        </div>
+        <br/>
+        <h4 >Shipping data</h4>
+        <div>
+            <label>{{user.address}}</label>
+        </div>
+        <div>
+            <label>{{user.number}}, {{user.neighood}}, {{user.cep}}, {{user.compliment}}</label>
+        </div>
+        <div>
+            <label>{{user.city}}, {{user.state}}, {{user.country}}</label>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-12">
+        <h1 align="center">Last Auctioned Products by {{user.nome}}</h1>
+        <br/>
+        <simple-item-line class="row"  ng-show="{{auction.status == 'Sold' && auction.user == user.nome}}" endtime="{{formatTime(auction.endtime)}}" enddate="{{formatDate(auction.enddate)}}" starttime="{{formatTime(auction.starttime)}}" startdate="{{formatDate(auction.startdate)}}" itemid="{{auction._id}}" time="{{getDoubleDigits(getTimeLeft(auction.starttime))}}" startprice="{{auction.startprice}}" price="{{auction.price}}" marketprice="{{auction.marketprice}}" title="{{auction.title}}" user="{{auction.user}}" url="{{auction.imageurl}}" ng-repeat="auction in auctions | filter:myfilter | orderBy:mySorter">
+            <!--
+            <a href="/editItem/{{auction._id}}" class="btn btn-info btn-block">Edit</a>
+            <button ng-click="removeItem(auction)" class="btn btn-danger btn-block">Remove</button>
+            -->
+        </simple-item-line>
+        <br/>
+    </div>
+</div>

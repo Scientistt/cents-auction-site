@@ -1,0 +1,29 @@
+
+
+<br/>
+
+<div class="row">
+
+    <simple-user class="col-lg-4  col-md-6 col-sm-12" nome="{{user.nome}}" fullname="{{user.fullname}}" status="{{user.status}}" ng-repeat="user in users | orderBy:'nome'">
+
+        <a class="btn btn-info" href="/edituser/{{user.nome}}">Edit User</a>
+        <button ng-click="removeUser(user)" class="btn btn-danger"> Remove</button>
+
+
+    </simple-user>
+
+    <!--
+    <painel-de-imagens-simples class="col-sm-3 col-md-3 col-lg-2 painel-animado" titulo="{{image.titulo}}" ng-repeat="image in images | filter:filtro">
+
+        <minha-foto url="{{image.url}}" titulo="{{image.titulo}}"></minha-foto>
+
+        <br/>
+
+        <a href="pictures/edit/{{image._id}}" class="btn btn-primary btn-block">Edit</a>
+
+        <meu-botao-perigo nome="Delete" acao="removePicture(image)"></meu-botao-perigo>
+
+    </painel-de-imagens-simples> -->
+
+
+</div>

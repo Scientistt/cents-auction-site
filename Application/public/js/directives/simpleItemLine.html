@@ -1,0 +1,48 @@
+
+<div class="card" style="width: 100%">
+    <div class="row">
+        <div class="col-lg-2" align="center" style=" align-self: center">
+            <img width="100%" src="{{url}}">
+        </div>
+        <div class="col-lg-2" align="center" style=" align-self: center">
+            <h5 >{{title}}</h5>
+        </div>
+        <div class="col-lg-8" align="center" style=" align-self: center">
+            <div class="row">
+                <div class="col-lg-4" align="center">
+                    Market Price <br>
+                    <b>U$ {{marketprice}}</b>
+                </div>
+                <div class="col-lg-4" align="center">
+                    Taken by <br>
+                    <b>{{user}}</b>
+                </div>
+                <div class="col-lg-4" align="center">
+                    Started in <br>
+                    <b>{{startdate}} at {{starttime}}</b>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4" align="center">
+                    Sold by <br>
+                    <b>U$ {{price}}</b>
+                </div>
+                <div class="col-lg-4" align="center">
+                    Number of bids <br>
+                    <b>{{ ((price - startprice) / 0.01)}}</b>
+                </div>
+                <div class="col-lg-4" align="center">
+                    Ended in <br>
+                    <b>{{enddate}} at {{endtime}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-transclude>
+
+    </div>
+</div>
+<div style="color: #ffffff">
+    &nbsp;
+</div>

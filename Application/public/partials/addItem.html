@@ -1,0 +1,122 @@
+<div class="page-header text-center">
+    <h1>{{auction.title}}</h1>
+</div>
+
+<form name="newItemForm" class="row" novalidate ng-submit="submitItem()">
+
+    <div class="col-md-9">
+        <div class="form-group">
+            <label>Title*</label>
+            <input name="title" type="text" ng-model="auction.title" class="form-control" required ng-maxlength="50">
+            <span class="form-control alert-danger" ng-show="newItemForm.$submitted && newItemForm.title.$error.required">
+                Please, enter the title.
+            </span>
+            <span class="form-control alert-danger" ng-show="newItemForm.title.$error.maxlength">
+                The title should be below 20 characthers.
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Image URL*</label>
+            <input name="imageurl" type="text" ng-model="auction.imageurl" class="form-control" required>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.imageurl.$error.required">
+                Please, enter the image url.
+            </span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Market Price U$*</label>
+                    <input name="marketprice" type="number"  ng-model="auction.marketprice" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.marketprice.$error.required">
+                        Please, enter the market price.
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <label>Price U$*</label>
+                    <input name="price" type="number"  ng-model="auction.price" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.price.$error.required">
+                        Please, enter the price.
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <label>Start Date</label>
+                    <input name="startdate" type="date" ng-model="auction.startdate" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.startdate.$error.required">
+                        Please, enter the date url.
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <label>Start Time</label>
+                    <input name="starttime"  step="1" type="time" ng-model="auction.starttime" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.starttime.$error.required">
+                        Please, enter the time url.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+
+<!--
+        <div class="form-group" style="background: #ffd3e4">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>startprice U$*</label>
+                    <input name="startprice" type="number"  ng-model="auction.startprice" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.startprice.$error.required">
+                        Please, enter the market price.
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <label>Status *</label>
+                    <input name="status" type="text"  ng-model="auction.status" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.status.$error.required">
+                        Please, enter the price.
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <label>End Date</label>
+                    <input name="enddate" type="date" ng-model="auction.enddate" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.enddate.$error.required">
+                        Please, enter the date url.
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <label>End Time</label>
+                    <input name="endtime"  step="1" type="time" ng-model="auction.endtime" class="form-control" required>
+                    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.endtime.$error.required">
+                        Please, enter the time url.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>User*</label>
+            <input name="user" input="textarea" ng-model="auction.user" class="form-control" required>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.user.$error.required">
+                Please, enter the description.
+            </span>
+        </div>
+-->
+
+
+
+
+        <div class="form-group">
+            <label>Description*</label>
+            <input name="description" input="textarea" ng-model="auction.description" class="form-control" required>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.description.$error.required">
+                Please, enter the description.
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+        <a href="/home" class="btn btn-primary">Voltar</a>
+    </div>
+    <div class="col-md-3">
+        <simple-item  startdate="{{formatDate(auction.startdate)}}" marketprice="{{auction.marketprice}}" starttime="{{formatTime(auction.starttime)}}" itemid="{{auction._id}}" time="15" price="{{auction.price}}" title="{{auction.title}}" user="{{auction.user}}" url="{{auction.imageurl}}">
+        </simple-item>
+    </div>
+
+</form>

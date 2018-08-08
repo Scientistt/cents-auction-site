@@ -1,0 +1,49 @@
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group">
+                <input class="form-control" placeholder="Looking for something?" ng-model="myfilter" ng-model-options="{debounce:500}" >
+                <span class="input-group-btn">
+                    <button ng-click="setFilter('')" class="btn btn-primary">Clear Filter</button>
+                </span>
+            </div>
+            <br/>
+                <select class="custom-select" name="mySorter" ng-model="mySorter">
+                    <option value="startdate" selected select="">Sort by date ▲</option>
+                    <option value="-startdate">Sort by date ▼</option>
+                    <option value="starttime">Sort by time ▲</option>
+                    <option value="-starttime">Sort by time ▼</option>
+                    <option value="price">Sort by price ▲</option>
+                    <option value="-price">Sort by price ▼</option>
+                </select>
+                <button ng-click="setFilter('AK-47')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">AK-47</button>
+                <button ng-click="setFilter('AWP')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">AWP</button>
+                <button ng-click="setFilter('M4')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">M4</button>
+                <button ng-click="setFilter('USP-S')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">USP-S</button>
+                <button ng-click="setFilter('Glock')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">Glock-18</button>
+                <button ng-click="setFilter('P250')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">P250</button>
+        </form>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <simple-item class="col-lg-3 col-md-6 col-sm-4"  marketprice="{{auction.marketprice}}" ng-show="{{auction.status == 'Available'}}" starttime="{{formatTime(auction.starttime)}}" startdate="{{formatDate(auction.startdate)}}" itemid="{{auction._id}}" time="{{getDoubleDigits(getTimeLeft(auction))}}" price="{{auction.price}}" title="{{auction.title}}" user="{{auction.user}}" url="{{auction.imageurl}}" ng-repeat="auction in auctions | filter:myfilter | orderBy:mySorter">
+        <div ng-show="isLogged"> <!--ng-controller="loginController"-->
+            <button ng-click="bidNow(auction, user.nome)" class="btn btn-primary btn-block">BID NOW</button>
+        </div>
+        <div ng-show="!isLogged"> <!--ng-controller="loginController"-->
+            <a href="/login" class="btn btn-primary btn-block">LOGIN TO BID</a>
+        </div>
+        <div  class="row" ng-show="isLogged && user.status=='Admin'">
+            <div class="col-lg-6">
+                <a href="/editItem/{{auction._id}}" class="btn btn-info btn-block">Edit</a>
+            </div>
+            <div class="col-lg-6">
+                <button ng-click="removeItem(auction)" class="btn btn-danger btn-block">Remove</button>
+            </div>
+        </div>
+
+    </simple-item>
+
+</div>

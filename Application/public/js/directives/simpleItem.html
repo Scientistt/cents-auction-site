@@ -1,0 +1,27 @@
+<div>
+    <div class="card">
+        <div class="containerIMG">
+            <a href="/seeItem/{{itemid}}&see"><img  class="card-img-top" src="{{url}}"></a>
+            <div ng-show="{{time==26}}" class="centeredBOT">Auction starts in {{startdate}} at {{starttime}}</div>
+            <div align="center" style="font-size: large" class="centeredTOP"><b>{{title}}</b></div>
+        </div>
+        <div class="card-body">
+            <div align="center" style="color: #858585">Market price <s><b>U$ {{marketprice}}</b></s></div>
+            <h1 class="card-title" align="center">U$ {{price}}</h1>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div  class="col-md-4" align="center" style="width: 100%; align-self: center; font-size: xx-large ; font-weight: bold; color:#000000">
+                    {{time == 26 ? 25 : time}}
+                </div>
+                <div class="col-md-8" style="width: 100%; align-self: center; font-size: large">
+                    <b>{{user}}</b>
+                </div>
+            </div>
+            <div ng-transclude>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>

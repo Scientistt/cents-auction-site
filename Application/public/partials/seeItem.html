@@ -1,0 +1,65 @@
+
+<br/>
+<div class="row">
+    <div class="col-lg-8 col-md-12 col-sm-12">
+        <div class="page-header text-center">
+            <h1>{{auction.title}}</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                Chronometer start:<br/>
+                <b>{{formatDate(auction.startdate)}} at {{formatTime(auction.starttime)}}</b>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                Auction ID: <b>{{auction._id}}</b>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+               <img src="{{auction.imageurl}}">
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div align="center" style="color: #858585">Market price <s><b>U$ {{auction.marketprice}}</b></s></div>
+                <h1 align="center">U$ {{auction.price}}</h1>
+                <div align="center" style="color: #ff4025"><b>Now {{( "" + (100.0 - ((100.0 * auction.price) / auction.marketprice)));}}% OFF</b></div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-4" align="center" style="font-size: xx-large ; font-weight: bold;">
+                        <b><h1>{{getDoubleDigits(getTimeLeft(auction.startdate, auction.starttime, auction.enddate, auction.endtime))}}</h1></b>
+                    </div>
+                    <div class="col-md-8">
+                        <div ng-show="!isLogged"> <!--ng-controller="loginController"-->
+                            <a href="/login" class="btn btn-primary btn-block">LOGIN TO BID</a>
+                        </div>
+                        <div ng-show="isLogged">
+                            <button class="btn btn-primary nav-fill" style="width: 100%" >BID NOW</button>
+                        </div>
+                    </div>
+                </div>
+                <div align="center">{{auction.user}}</div>
+                <br/>
+                <p>{{auction.description}}</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div ng-show="!isLogged"> <!--ng-controller="loginController"-->
+            <a class="btn btn-primary btn-block" href="/login">LOG IN to Buy Bids</a>
+        </div>
+        <div ng-show="isLogged"> <!--ng-controller="loginController"-->
+            <a class="btn btn-primary btn-block" href="/bids">U$ Buy Bids</a>
+        </div>
+
+        <br/>
+        <b>About the Auction</b><br/>
+        <ul>
+            <li>O Cronometro tem duração de 25 segundos.</li>
+            <li>A cada lance o valor é acrescentado em U$ 0,01.</li>
+            <li>Frete: <b>Grátis</b>.</li>
+        </ul>
+
+    </div>
+</div>

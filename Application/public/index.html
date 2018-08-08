@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="moduloPrincipal" ng-controller="loginController">
+
+<head>
+
+    <meta charset="UTF-8">
+    <base href="/"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>CSGO Ready For Auction</title>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/heroic-features.css" rel="stylesheet">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/services/my-services.js"></script>
+    <script src="js/services/token-interceptor.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/controllers/fotos-controller.js"></script>
+    <script src="js/controllers/addFoto-controller.js"></script>
+    <script src="js/controllers/group-controller.js"></script>
+    <script src="js/controllers/login-controller.js"></script>
+
+    <script src="js/directives/minhas-diretivas.js"></script>
+
+
+
+    <script src="js/controllers/simple-content-controller.js"></script>
+    <script src="js/controllers/auctions-controller.js"></script>
+    <script src="js/controllers/auctions-management-controller.js"></script>
+    <script src="js/controllers/users-management-controller.js"></script>
+    <script src="js/controllers/user-controller.js"></script>
+    <script src="js/controllers/recover-controller.js"></script>
+
+</head>
+
+
+<div class="containerIMG">
+    <img  class="card-img-top" src="images/banner.jpg">
+    <div class="centeredIMG"><a href="/home"><img width="30%" src="images/icon.png"> </a></div>
+</div>
+
+
+    <body>
+    <!-- <img src="https://d1jkho2idshhnx.cloudfront.net/blog/wp-content/uploads/2016/02/csgo-banner.jpg" class="fixed-top" width="100%"> -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: #1d262b">
+        <div class="container">
+            <a class="navbar-brand" href="/home"><b>CSGO</b> <i>Ready For Auction</i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auctioned">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item" ng-show="isLogged">
+                        <a class="nav-link" href="/bids" >Buy Bids</a>
+                    </li>
+                    <li class="nav-item" ng-show="!isLogged">
+                        <a class="nav-link" href="/login"  ng-show="!isLogged" >Login</a>
+                    </li>
+                    <li class="nav-item" ng-show="!isLogged">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item active" ng-show="isLogged">
+                        <a class="nav-link" href="/profile/{{user.nome}}">Welcome, {{user.nome}} ({{user.bids}} bids)</a>
+                    </li>
+                    <li class="nav-item" ng-show="isLogged">
+                        <a class="nav-link"  ng-click="logout()">Logout</a>
+                    </li>
+                    <li class="nav-item" ng-show="isLogged && user.status=='Admin'">
+                        <a class="nav-link" style="color: #ffc1c3" href="/addItem">New Auction</a>
+                    </li>
+                    <li class="nav-item" ng-show="isLogged && user.status=='Admin'">
+                        <a class="nav-link" style="color: #ffc1c3" href="/users">Manage users</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <ng-view>
+
+        </ng-view>
+    </div>
+
+    <footer class="py-5 bg-dark ">
+        <div class="container">
+            <p class="m-0 text-center text-white">Departamento de Ciência da computação - DCC<br/>Arquitetura e Tecnologia de Sistemas Web<br/>Copyright &copy; Fabio Vitor 2018</p>
+        </div>
+    </footer>
+    </body>
+</html>
+
+

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group">
+                <input class="form-control" placeholder="What are you looking for?" ng-model="filtro" ng-model-options="{debounce:500}" >
+                <span class="input-group-btn">
+                    <a href="pictures/new" class="btn btn-primary">   Add   </a>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+<a href="/logout" class="btn btn-danger">LOGout</a>
+
+<p class="alert alert-info" ng-show="mensagem.length">
+    {{mensagem}}
+</p>
+
+<div class="row">
+    <painel-de-imagens-simples class="col-sm-3 col-md-3 col-lg-2 painel-animado" titulo="{{image.titulo}}" ng-repeat="image in images | filter:filtro">
+
+        <minha-foto url="{{image.url}}" titulo="{{image.titulo}}"></minha-foto>
+
+        <br/>
+
+        <a href="pictures/edit/{{image._id}}" class="btn btn-primary btn-block">Edit</a>
+
+        <meu-botao-perigo nome="Delete" acao="removePicture(image)"></meu-botao-perigo>
+
+</painel-de-imagens-simples>
+</div>

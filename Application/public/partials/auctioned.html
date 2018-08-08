@@ -1,0 +1,67 @@
+
+
+<!--
+<header class="jumbotron my-4">
+    <h1 class="display-3">Welcome to CSGo Store!</h1>
+    <p class="lead">A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. A melhor loja do mundo. </p>
+    <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+</header>
+-->
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group">
+                <input class="form-control" placeholder="What are you looking for?" ng-model="myfilter" ng-model-options="{debounce:500}" >
+                <span class="input-group-btn">
+                    <button ng-click="setFilter('')" class="btn btn-primary">Clear</button>
+                </span>
+            </div>
+            <br/>
+
+
+            <select class="custom-select" name="mySorter" ng-model="mySorter">
+                <option value="enddate" selected select="">Sort by date ▲</option>
+                <option value="-enddate">Sort by date ▼</option>
+                <option value="endtime">Sort by time ▲</option>
+                <option value="-endtime">Sort by time ▼</option>
+                <option value="price">Sort by price ▲</option>
+                <option value="-price">Sort by price ▼</option>
+            </select>
+
+            <button ng-click="setFilter('AK-47')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">AK-47</button>
+            <button ng-click="setFilter('AWP')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">AWP</button>
+            <button ng-click="setFilter('M4')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">M4</button>
+            <button ng-click="setFilter('USP-S')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">USP-S</button>
+            <button ng-click="setFilter('Glock')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">Glock</button>
+            <button ng-click="setFilter('P250')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">P250</button>
+            <button ng-click="setFilter('')" class="btn btn-link btn-xs col-lg-1 col-md-2 col-sm-3">All Items</button>
+
+        </form>
+    </div>
+</div>
+<br/>
+<h1 align="center">Last Auctioned Products</h1>
+<br/>
+    <simple-item-line class="row"  ng-show="{{auction.status == 'Sold'}}" endtime="{{formatTime(auction.endtime)}}" enddate="{{formatDate(auction.enddate)}}" starttime="{{formatTime(auction.starttime)}}" startdate="{{formatDate(auction.startdate)}}" itemid="{{auction._id}}" time="{{getDoubleDigits(getTimeLeft(auction.starttime))}}" startprice="{{auction.startprice}}" price="{{auction.price}}" marketprice="{{auction.marketprice}}" title="{{auction.title}}" user="{{auction.user}}" url="{{auction.imageurl}}" ng-repeat="auction in auctions | filter:myfilter | orderBy:mySorter">
+        <!--
+        <a href="/editItem/{{auction._id}}" class="btn btn-info btn-block">Edit</a>
+        <button ng-click="removeItem(auction)" class="btn btn-danger btn-block">Remove</button>
+        -->
+    </simple-item-line>
+<br/>
+
+<!--
+    <painel-de-imagens-simples class="col-sm-3 col-md-3 col-lg-2 painel-animado" titulo="{{image.titulo}}" ng-repeat="image in images | filter:filtro">
+
+        <minha-foto url="{{image.url}}" titulo="{{image.titulo}}"></minha-foto>
+
+        <br/>
+
+        <a href="pictures/edit/{{image._id}}" class="btn btn-primary btn-block">Edit</a>
+
+        <meu-botao-perigo nome="Delete" acao="removePicture(image)"></meu-botao-perigo>
+
+    </painel-de-imagens-simples> -->
+
+
