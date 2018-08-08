@@ -1,2 +1,2 @@
 # cents-auction-site
-Final Work of the Web Systems Architecture: A cents auction site made with angulajs
+Final Work of the Web Systems Architecture and Technologies: A cents auction site made with angulajs
